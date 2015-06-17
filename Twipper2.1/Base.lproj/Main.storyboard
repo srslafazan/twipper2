@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="6RB-eJ-sLK">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="vwN-RV-Cc6">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Twipper-->
         <scene sceneID="sF9-f4-YGb">
             <objects>
                 <tableViewController id="6RB-eJ-sLK" customClass="ViewController" customModule="Twipper2_1" customModuleProvider="target" sceneMemberID="viewController">
@@ -74,10 +74,35 @@
                             <outlet property="delegate" destination="6RB-eJ-sLK" id="DDD-oo-4FR"/>
                         </connections>
                     </tableView>
+                    <navigationItem key="navigationItem" title="Twipper" id="b9a-35-3oT">
+                        <barButtonItem key="rightBarButtonItem" style="done" systemItem="add" id="DZM-Rs-1wx">
+                            <connections>
+                                <action selector="addTweetButtonPressed:" destination="6RB-eJ-sLK" id="42c-R9-qFM"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TQu-p9-n7a" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="245" y="355"/>
+            <point key="canvasLocation" x="1057" y="355"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="OWX-ZT-hrl">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="vwN-RV-Cc6" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="6Ir-Lt-IP0">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="6RB-eJ-sLK" kind="relationship" relationship="rootViewController" id="gXF-DY-FNG"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="F4m-15-1c5" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="365" y="355"/>
         </scene>
     </scenes>
 </document>

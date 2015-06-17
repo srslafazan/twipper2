@@ -89,6 +89,19 @@ class ViewController: UITableViewController {
             }
         })
     }
+    @IBAction func addTweetButtonPressed(sender: UIBarButtonItem) {
+        if SLComposeViewController.isAvailableForServiceType(SLServiceTypeTwitter){
+            // create SLComposeViewController for service type SLServiceTypeTwitter
+            var tweetSheet:SLComposeViewController = SLComposeViewController(forServiceType: SLServiceTypeTwitter)
+            tweetSheet.setInitialText("Tweet!...")
+            // presentViewController the SLComposeViewController we just created
+            self.presentViewController(tweetSheet, animated: true, completion: nil)
+            
+        } else {
+            println ("Can't send tweet")
+        }
+
+    }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let dequeued: AnyObject = tableView.dequeueReusableCellWithIdentifier("TweetCell", forIndexPath: indexPath)
