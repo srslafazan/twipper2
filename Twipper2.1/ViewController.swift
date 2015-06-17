@@ -100,11 +100,19 @@ class ViewController: UITableViewController {
         cell.userNameLabel.text = tweet.userName
         cell.createdAtLabel.text = tweet.createdAt
         
-        if tweet.pictureURL != nil {
-            if let imageData = NSData(contentsOfURL: tweet.pictureURL!) {
-                cell.pictureImageView.image = UIImage(data: imageData)
-            }
-        }
+        dispatch_async(dispatch_get_global_queue(QOS_CLASS_DEFAULT, 0), {() -> Void in
+            println(NSThread.isMainThread() ? "Main Thread" : "Not on Main Thread")
+            if tweet.pictureURL != nil {
+                if let imageData = NSData(contentsOfURL: tweet.pictureURL!) {
+                    dispatch_async(dispatch_get_main_queue(), {() -> Void in
+                        println(NSThread.isMainThread() ? "Main Thread" : "Not on Main Thread")
+                        if cell.userNameLabel.text == tweet.userName {
+                            cell.pictureImageView.image = UIImage(data: imageData)
+                        }
+                    })
+                }
+            } 
+        })
         
         return cell
     }
